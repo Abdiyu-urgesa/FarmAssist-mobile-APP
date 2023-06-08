@@ -76,13 +76,11 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
-<<<<<<< HEAD
   flutter_localizations:
     dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
-=======
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -90,21 +88,11 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.15"
->>>>>>> 51eea9053e98d75445eb9500cae1ebd1fa5d365a
   flutter_test:
     dependency: "direct dev"
     description: flutter
     source: sdk
     version: "0.0.0"
-<<<<<<< HEAD
-  intl:
-    dependency: "direct main"
-    description:
-      name: intl
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.17.0"
-=======
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -158,7 +146,14 @@ packages:
       name: image_picker_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.6.3"
+    version: "2.6.4"
+  intl:
+    dependency: "direct main"
+    description:
+      name: intl
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.17.0"
   js:
     dependency: transitive
     description:
@@ -166,7 +161,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.4"
->>>>>>> 51eea9053e98d75445eb9500cae1ebd1fa5d365a
   lints:
     dependency: transitive
     description:
@@ -209,8 +203,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.2"
-<<<<<<< HEAD
-=======
   plugin_platform_interface:
     dependency: transitive
     description:
@@ -218,18 +210,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.4"
->>>>>>> 51eea9053e98d75445eb9500cae1ebd1fa5d365a
   provider:
     dependency: "direct main"
     description:
       name: provider
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
-    version: "3.2.0"
-=======
     version: "6.0.5"
->>>>>>> 51eea9053e98d75445eb9500cae1ebd1fa5d365a
   sky_engine:
     dependency: transitive
     description: flutter
