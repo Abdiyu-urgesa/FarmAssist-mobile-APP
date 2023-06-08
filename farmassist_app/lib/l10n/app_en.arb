@@ -1,0 +1,16 @@
+{
+    "language": "english",
+    "@language": {
+        "discription": "the current language"
+    },
+
+    "helloworld": "hello world",
+    "@helloworld": {
+        "discription": "a programm greeting"
+    },
+
+    "abdiyu": "abdiyus name english",
+    "@abdiyu": {
+        "discription": "testing"
+    }
+}

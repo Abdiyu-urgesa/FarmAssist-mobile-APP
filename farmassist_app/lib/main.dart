@@ -1,8 +1,13 @@
+import 'package:farmassist_app/componenets/langDropdown.dart';
+import 'package:farmassist_app/l10n/I10n.dart';
 import 'package:farmassist_app/route_generator.dart';
 import 'package:farmassist_app/screens/feed.dart';
 import 'package:farmassist_app/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+// import "package:provider/provider.dart";
 
 void main() {
   runApp(const MyApp());
@@ -19,6 +24,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      supportedLocales: L10n.all,
+      locale: const Locale("am"),
+      localizationsDelegates: const [
+        AppLocalizations.delegate, // Add this line
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       initialRoute: "/",
       onGenerateRoute: RouteGenerator.generateRoute,
     );
@@ -39,21 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          elevation: 0.0,
-          centerTitle: true,
-          backgroundColor: Colors.white,
-          foregroundColor: Colors.blue,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text("Lang"),
-              Icon(
-                Icons.notifications,
-                size: 25,
-                color: Colors.grey.shade600,
-              )
-            ],
-          ),
+          title: const LanguageDropdown(),
         ),
         backgroundColor: Colors.white,
         bottomNavigationBar: CurvedNavigationBar(
