@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:farmassist_app/classes/language_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -42,12 +43,13 @@ class ScanningPageState extends State<ScanningPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(100, 241, 241, 241),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
             child: Text(
-              "Scan Object",
+              translation(context).abdiyu,
               style: const TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.w700,
@@ -55,80 +57,86 @@ class ScanningPageState extends State<ScanningPage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: 200.0,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                color: Color.fromARGB(179, 133, 133, 133),
-              ),
-              // child: Center(
-              //   child: _image == null ? Text("No Image Selected"): Image.file(_image!),
-              // ),
-              child: Center(
-                  child: _image == null
-                      ? Column(
-                          //  crossAxisAlignment: CrossAxisAlignment.center,
-
-                          children: [
-                            Container(
-                                // alignment: Alignment.center,
-                                margin: const EdgeInsets.only(
-                                    left: 20, top: 70, bottom: 30),
-                                height: 30,
-                                width: 150,
-                                decoration: const BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(15)),
-                                ),
-                                child: Row(
-                                  //   mainAxisAlignment: MainAxisAlignment.start,
-                                  // crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    IconButton(
-                                      padding: (EdgeInsets.only(
-                                          top: 5, left: 5, right: 20)),
-                                      onPressed: getImagefromGallery,
-                                      // ignore: prefer_const_constructors
-                                      icon: Icon(
-                                        Icons.add,
-                                        color: Colors.green,
-                                        size: 28,
-                                      ),
-                                    ),
-                                    TextButton(
-                                        onPressed: getImagefromGallery,
-                                        // ignore: prefer_const_constructors
-                                        child: Text(
-                                          "Upload",
-                                          style: const TextStyle(
-                                              // fontSize: 12,
-                                              fontWeight: FontWeight.w700,
-                                              color: Colors.green),
-                                        ))
-                                  ],
-                                )),
-                            // const SizedBox(
-                            //   height: 5,
-                            // ),
-                            const Text(
-                              "Take or UPload photo",
+            padding: const EdgeInsets.all(25),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                    margin: const EdgeInsets.only(bottom: 15),
+                    height: 30,
+                    width: 150,
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        IconButton(
+                          onPressed: getImagefromGallery,
+                          icon: const Icon(
+                            Icons.add,
+                            color: Colors.green,
+                            size: 23,
+                          ),
+                        ),
+                        TextButton(
+                            onPressed: getImagefromGallery,
+                            child: const Text(
+                              "Upload",
                               style: TextStyle(
-                                  fontSize: 20,
-                                  color: Color.fromARGB(225, 69, 69, 69)),
-                            )
-                          ],
-                        )
-                      : Image.file(_image!)
-                  // Container(
-                  //   child:Image.file(
-                  //     _image!,
-                  //     fit: BoxFit.cover,
-                  //   ),
-                  // )
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.green),
+                            ))
+                      ],
+                    )),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 250.0,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    color: Color.fromARGB(100, 225, 225, 225),
                   ),
+                  child: Center(
+                      child: _image == null
+                          ? Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Image(
+                                  image: AssetImage("assets/Group 196.png"),
+                                  height: 100,
+                                  fit: BoxFit.cover,
+                                ),
+                                Text(
+                                  "You don't have any plants photo",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color.fromARGB(255, 69, 69, 69)),
+                                ),
+                                Text(
+                                  "Add your plant now",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color.fromARGB(255, 13, 25, 69)),
+                                )
+                              ],
+                            )
+                          : Container(
+                              width: 100,
+                              color: Colors.yellow,
+                              child: Image.file(
+                                _image!,
+                                fit: BoxFit.cover,
+                              ),
+                            )),
+                ),
+              ],
             ),
           ),
           Row(
@@ -137,18 +145,14 @@ class ScanningPageState extends State<ScanningPage> {
               FloatingActionButton(
                 onPressed: getImagefromcamera,
                 tooltip: "Pick Image from Camera",
-                backgroundColor: Color.fromARGB(255, 4, 209, 11),
+                backgroundColor: Color.fromARGB(255, 62, 212, 0),
                 foregroundColor: Colors.white,
                 elevation: 0,
                 child: Icon(
-                  Icons.camera,
+                  Icons.camera_alt_outlined,
+                  size: 30,
                 ),
               ),
-              // FloatingActionButton(
-              //   onPressed: getImagefromGallery,
-              //   tooltip: "pick Image from gallery",
-              //   child: Icon(Icons.folder),
-              // )
             ],
           )
         ],
