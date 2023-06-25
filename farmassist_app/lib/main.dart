@@ -4,6 +4,7 @@ import 'package:farmassist_app/route_generator.dart';
 import 'package:farmassist_app/screens/feed.dart';
 import 'package:farmassist_app/screens/home.dart';
 import 'package:farmassist_app/helpers/l10nprovider.dart';
+import 'package:farmassist_app/screens/loginPage.dart';
 import 'package:farmassist_app/screens/peofile.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -112,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
         body: SafeArea(
           child: Builder(builder: (BuildContext context) {
             if (_current_tab == 0) {
-              return FeedPage();
+              return LoginPage();
             }
             if (_current_tab == 1) {
               return ScanningPage();

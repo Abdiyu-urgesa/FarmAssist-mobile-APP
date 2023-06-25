@@ -41,19 +41,16 @@ class _WeatherPageState extends State<WeatherPage> {
       String data = response.body;
 
       var decodedData = jsonDecode(data);
-      setState(() {
-        this.temp = decodedData['main']['temp'];
-        this.description = decodedData['weather'][0]['description'];
-        this.currently = decodedData['weather'][0]['main'];
-        this.cityName = decodedData['name'];
-        this.humidity = decodedData['main']['humidity'];
-        this.windSpeed = decodedData['wind']['speed'];
-      });
-
-      //   print(temp);
-      //   print(description);
-      //   print(cityName);
-      //  print(data);
+      if (mounted) {
+        setState(() {
+          this.temp = decodedData['main']['temp'];
+          this.description = decodedData['weather'][0]['description'];
+          this.currently = decodedData['weather'][0]['main'];
+          this.cityName = decodedData['name'];
+          this.humidity = decodedData['main']['humidity'];
+          this.windSpeed = decodedData['wind']['speed'];
+        });
+      }
     } else {
       print(response.statusCode);
     }
@@ -77,182 +74,192 @@ class _WeatherPageState extends State<WeatherPage> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          children: [
-            
-          ],
-        
-        ),
-        Column(
-          children: [
-            Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(bottom: 10.0),
-                  child: Container(
-                    color: const Color.fromARGB(100, 241, 241, 241),
-                    child: Text(
+        Container(
+           margin:EdgeInsets.only(bottom: 15),
+          width: MediaQuery.of(context).size.width,
+          height: 60,
+          color: Color.fromARGB(100, 225, 225, 225),
+          padding: EdgeInsets.only(left:15,right:15,top:5,bottom:5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.cloudy_snowing,
+                      size: 30,
+                      color: Colors.blue.shade200,
+                    ),
+                    SizedBox(width: 10),
+                    Text(
                       cityName != null ? cityName.toString() : "loading",
                       style: TextStyle(
-                          color: Colors.green,
-                          fontSize: 14.0,
+                          color: Colors.blue[500],
+                          fontSize: 15.0,
                           fontWeight: FontWeight.w600),
                     ),
+                   
+                  ],
+                ),
+              ),
+              Row(
+                children: [
+                  Container(
+                    width: 35,
+                    height:35,
+                    decoration: BoxDecoration(
+                      color: Colors.blueAccent,
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Icon(
+                      Icons.thermostat,
+                      size: 25,
+                      color: Colors.white,
+                    ),
                   ),
-                ),
-                Text(
-                  temp != null ? temp.toString() + "\u00B0" : "loading",
-                  style: TextStyle(
-                      color: Colors.green,
-                      fontSize: 14.0,
-                      fontWeight: FontWeight.w600),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 10.0),
-                  child: Text(
-                    currently != null ? currently.toString() : "loading",
+                  SizedBox(width: 5),
+                  Text(
+                    temp != null ? temp.toString() + "\u00B0" : "loding",
                     style: TextStyle(
-                        color: Colors.green,
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.w600),
+                        color: Colors.black87,
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-               color: Color.fromARGB(100, 225, 225, 225),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 10.0),
-                    child: Icon(
-                      Icons.thermostat_outlined,
-                      size: 30,
-                      color: Colors.green,
+        Container(
+          padding: EdgeInsets.only(left:15,right:15,top:5,bottom:5),
+          
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                child: Row(
+                  children: [
+                    Container(
+                      width: 35,
+                      height: 35,
+                      decoration: BoxDecoration(
+                        color: Colors.yellow.shade700,
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: Icon(
+                        Icons.cloud,
+                        size: 20,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                  Text(
-                    "Temparature",
-                    style: TextStyle(
-                        color: Colors.green,
-                        fontSize: 10.0,
-                        fontWeight: FontWeight.w600),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 10.0),
-                    child: Text(
-                      temp != null ? temp.toString() + "\u00B0" : "loding",
-                      style: TextStyle(
-                          color: Colors.green,
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.bold),
+                    SizedBox(width: 5),
+                    Column(
+                       mainAxisAlignment: MainAxisAlignment.center,
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                         Text(
+                          "Weather",
+                          style: TextStyle(
+                              color: Colors.grey.shade600,
+                              fontSize: 10.0,
+                              fontWeight: FontWeight.w400),
+                        ),
+                        Text(
+                          description != null
+                              ? description.toString()
+                              : "loading",
+                          style: TextStyle(
+                              color: Colors.black54,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Container(
-               color: Color.fromARGB(100, 225, 225, 225),
-              child: Column(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 10.0),
-                    child: Icon(
-                      Icons.cloud,
-                      size: 30,
-                      color: Colors.green,
+                  Container(
+                    width: 35,
+                    height: 35,
+                    decoration: BoxDecoration(
+                      color: Colors.green.shade400,
+                      borderRadius: BorderRadius.circular(10.0),
                     ),
-                  ),
-                  Text(
-                    "Weather",
-                    style: TextStyle(
-                        color: Colors.green,
-                        fontSize: 12.0,
-                        fontWeight: FontWeight.w600),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 10.0),
-                    child: Text(
-                      description != null ? description.toString() : "loading",
-                      style: TextStyle(
-                          color: Colors.green,
-                          fontSize: 12.0,
-                          fontWeight: FontWeight.w600),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-               color: Color.fromARGB(100, 225, 225, 225),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 10.0),
                     child: Icon(
                       Icons.opacity,
-                      size: 30,
-                      color: Colors.green,
+                      size: 20,
+                      color: Colors.white70,
                     ),
                   ),
-                  Text(
-                    "humdity",
-                    style: TextStyle(
-                        color: Colors.green,
-                        fontSize: 12.0,
-                        fontWeight: FontWeight.w600),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 10.0),
-                    child: Text(
-                      humidity != null ? humidity.toString() : "loading",
-                      style: TextStyle(
-                          color: Colors.green,
-                          fontSize: 12.0,
-                          fontWeight: FontWeight.w600),
-                    ),
+                  SizedBox(width: 5),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                     crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "humdity",
+                        style: TextStyle(
+                            color: Colors.grey.shade600,
+                            fontSize: 10.0,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      Text(
+                        humidity != null ? humidity.toString() : "loading",
+                        style: TextStyle(
+                            color: Colors.black54,
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ),
-            Container(
-               color: Color.fromARGB(100, 225, 225, 225),
-              child: Column(
+              Row(
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 10.0),
+                  Container(
+                    width: 35,
+                    height: 35,
+                    decoration: BoxDecoration(
+                      color: Colors.blue.shade300,
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
                     child: Icon(
                       Icons.wind_power_sharp,
-                      size: 30,
-                      color: Colors.green,
+                      size: 20,
+                      color: Colors.white70,
                     ),
                   ),
-                  Text(
-                    "wind speed",
-                    style: TextStyle(
-                        color: Colors.green,
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.w600),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 10.0),
-                    child: Text(
-                      windSpeed != null ? windSpeed.toString() : "loading",
-                      style: TextStyle(
-                          color: Colors.green,
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.w600),
-                    ),
+                  SizedBox(width: 5),
+                  Column(
+                     mainAxisAlignment: MainAxisAlignment.center,
+                     crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "wind speed",
+                        style: TextStyle(
+                            color: Colors.grey.shade600,
+                            fontSize: 10.0,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      Text(
+                        windSpeed != null
+                            ? windSpeed.toString()
+                            : "loading",
+                        style:const TextStyle(
+                            color: Colors.black54,
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w800),
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ),
-          ],
+            ],
+          ),
         )
       ],
     );
