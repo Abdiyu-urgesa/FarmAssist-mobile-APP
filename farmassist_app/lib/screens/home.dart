@@ -10,6 +10,7 @@ import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:location/location.dart';
 
+import '../componenets/TopSnackbar.dart';
 import 'weatherModel.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -51,6 +52,10 @@ class ScanningPageState extends State<ScanningPage> {
     } else {
       print(response);
       print("no goood");
+      const TopSnackBar(
+        message: 'Hello, world!',
+        icon: Icons.info,
+      );
       // Handle the API error response
     }
   }
@@ -92,19 +97,6 @@ class ScanningPageState extends State<ScanningPage> {
           child: Column(
             children: [
               WeatherPage(),
-              // Padding(
-              //   padding: const EdgeInsets.only(top: 16),
-              //   child: Center(
-              //     child: Text(
-              //       translation(context).abdiyu,
-              //       style: const TextStyle(
-              //           fontSize: 30,
-              //           fontWeight: FontWeight.w700,
-              //           color: Colors.green),
-              //     ),
-              //   ),
-              // ),
-
               Padding(
                 padding: const EdgeInsets.all(25),
                 child: Column(

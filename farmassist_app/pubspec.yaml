@@ -38,7 +38,9 @@ dependencies:
   http: any
   location: ^4.4.0
   geolocator:
-
+  dio: ^5.2.1+1
+  path_provider: ^2.0.15
+  cached_network_image: ^3.2.3
 
 dev_dependencies:
   flutter_test:

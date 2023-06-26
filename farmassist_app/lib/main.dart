@@ -1,7 +1,8 @@
 import 'package:farmassist_app/componenets/langDropdown.dart';
 import 'package:farmassist_app/l10n/I10n.dart';
 import 'package:farmassist_app/route_generator.dart';
-import 'package:farmassist_app/screens/feed.dart';
+import 'package:farmassist_app/screens/FeedPage.dart';
+
 import 'package:farmassist_app/screens/home.dart';
 import 'package:farmassist_app/helpers/l10nprovider.dart';
 import 'package:farmassist_app/screens/loginPage.dart';
@@ -70,7 +71,7 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-int _current_tab = 1;
+int _current_tab = 0;
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
@@ -113,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
         body: SafeArea(
           child: Builder(builder: (BuildContext context) {
             if (_current_tab == 0) {
-              return LoginPage();
+              return FeedPage();
             }
             if (_current_tab == 1) {
               return ScanningPage();

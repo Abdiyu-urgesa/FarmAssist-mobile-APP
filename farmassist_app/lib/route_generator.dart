@@ -1,3 +1,4 @@
+import 'package:farmassist_app/classes/getToken.dart';
 import 'package:farmassist_app/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'main.dart';
@@ -5,6 +6,7 @@ import 'main.dart';
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     final args = settings.arguments;
+    final token = getToken('token');
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => MyHomePage());
