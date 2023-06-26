@@ -13,7 +13,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-     return Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20),
@@ -29,41 +29,26 @@ class _ProfilePageState extends State<ProfilePage> {
               const SizedBox(height: 10),
               itemProfile('Phone', '0961543704', CupertinoIcons.phone),
               const SizedBox(height: 10),
-              itemProfile('Address', 'abc address, xyz city', CupertinoIcons.location),
+              itemProfile(
+                  'Address', 'abc address, xyz city', CupertinoIcons.location),
               const SizedBox(height: 10),
-              itemProfile('Email', 'abdisawake5@gmail.com', CupertinoIcons.mail),
-              const SizedBox(height: 20,),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 150,
-                    child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          primary:Colors.green ,
-                          padding: const EdgeInsets.all(15),
-                        ),
-                        child: const Text(
-                          'change password',
-                          )
-                    ),
+              itemProfile(
+                  'Email', 'abdisawake5@gmail.com', CupertinoIcons.mail),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.green,
+                    padding: const EdgeInsets.all(15),
                   ),
-                  SizedBox(width: 20),
-                  SizedBox(
-                     width: 150,
-                    child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          primary:Colors.green ,
-                          padding: const EdgeInsets.all(15),
-                        ),
-                        child: const Text(
-                          'Edit Profile',
-                          )
+                  child: Container(
+                    width: double.infinity,
+                    child: const Text(
+                      'Create Post',
                     ),
-                  ),
-                ],
-              )
+                  ))
             ],
           ),
         ),
@@ -81,10 +66,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 offset: Offset(0, 5),
                 color: Colors.deepOrange.withOpacity(.2),
                 spreadRadius: 2,
-                blurRadius: 10
-            )
-          ]
-      ),
+                blurRadius: 10)
+          ]),
       child: ListTile(
         title: Text(title),
         subtitle: Text(subtitle),

@@ -1,5 +1,7 @@
 import 'package:farmassist_app/classes/getToken.dart';
+import 'package:farmassist_app/screens/FeedPage.dart';
 import 'package:farmassist_app/screens/home.dart';
+import 'package:farmassist_app/screens/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'main.dart';
 
@@ -11,8 +13,11 @@ class RouteGenerator {
       case '/':
         return MaterialPageRoute(builder: (_) => MyHomePage());
 
-      case '/seccondpage':
-        return MaterialPageRoute(builder: (_) => const ScanningPage());
+      case '/feed':
+        return MaterialPageRoute(builder: (_) => const FeedPage());
+
+      case '/login':
+        return MaterialPageRoute(builder: (_) => LoginPage());
 
       // case '/appointment':
       //   return MaterialPageRoute(builder: (_) => LoginCardOverlapRoute());
@@ -23,9 +28,6 @@ class RouteGenerator {
       //   } else {
       //     return _errorRoute();
       //   }
-
-      // case '/department':
-      //   return MaterialPageRoute(builder: (_) => DepartmentPage());
 
       // case '/doctors':
       //   return MaterialPageRoute(builder: (_) => DoctorsPage());

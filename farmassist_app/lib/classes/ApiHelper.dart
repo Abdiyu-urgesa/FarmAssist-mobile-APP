@@ -11,10 +11,10 @@ class Api {
       if (!options.path.contains('http')) {
         options.path = 'https://farmawebapp.onrender.com${options.path}';
       }
-      //if (accessToken.toString() != "") {
-      //  options.headers['Authorization'] = 'Bearer $accessToken';
-      return handler.next(options);
-      //}
+      // if (accessToken.toString() != "") {
+      //   options.headers['Authorization'] = 'Bearer $accessToken';
+      //   return handler.next(options);
+      // }
     }));
   }
 }

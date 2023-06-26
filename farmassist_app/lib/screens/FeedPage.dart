@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:farmassist_app/classes/get.dart';
 import 'package:flutter/material.dart';
-
 import '../models/Postmode.dart';
 
 class FeedPage extends StatefulWidget {
@@ -45,18 +44,17 @@ class _FeedPageState extends State<FeedPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: 10),
-                          Text(
-                            region.postedBy!.username.toString(),
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 69, 69, 69)),
+                          Padding(
+                            padding: const EdgeInsets.all(15),
+                            child: Text(
+                              region.postedBy!.username.toString(),
+                              style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(255, 69, 69, 69)),
+                            ),
                           ),
-                          SizedBox(height: 10),
                           CachedNetworkImage(
-                            width: double.infinity,
-                            height: double.infinity,
                             fit: BoxFit.cover,
                             imageUrl:
                                 "https://farmawebapp.onrender.com${region.thumbnail.toString()}",
@@ -68,12 +66,15 @@ class _FeedPageState extends State<FeedPage> {
                                 Icon(Icons.error),
                           ),
                           SizedBox(height: 10),
-                          Text(
-                            region.title.toString(),
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 69, 69, 69)),
+                          Padding(
+                            padding: const EdgeInsets.all(15),
+                            child: Text(
+                              region.title!.toString(),
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                  color: Color.fromARGB(255, 69, 69, 69)),
+                            ),
                           ),
                         ],
                       )),

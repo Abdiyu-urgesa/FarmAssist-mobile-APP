@@ -27,7 +27,7 @@ class _TopSnackBarState extends State<TopSnackBar> {
                     Text(widget.message),
                   ],
                 ),
-                backgroundColor: Colors.green,
+                backgroundColor: Colors.red,
               ),
             );
           },

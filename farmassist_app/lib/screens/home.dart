@@ -1,15 +1,15 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:farmassist_app/classes/get.dart';
 import 'package:farmassist_app/classes/language_constants.dart';
+import 'package:farmassist_app/models/Predictmodel.dart';
 import 'package:farmassist_app/screens/currentWeather.dart';
 import 'package:farmassist_app/screens/loading_screen.dart';
 import 'package:farmassist_app/screens/try_weather.dart';
-// import 'package:farmassist_app/screens/loading_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:location/location.dart';
-
 import '../componenets/TopSnackbar.dart';
 import 'weatherModel.dart';
 import 'package:image_picker/image_picker.dart';
@@ -22,43 +22,43 @@ class ScanningPage extends StatefulWidget {
 }
 
 class ScanningPageState extends State<ScanningPage> {
+  late Future<Predictmodel>? _predictData = null;
+
+  servicesApi _api = servicesApi();
   File? _image;
   final picker = ImagePicker();
   String? myclass;
   String? confidence;
 
-  Future<void> sendFormDataWithImage(imageFile) async {
-    print("apiiiiiiii");
-    final url = Uri.parse('https://try-api.onrender.com/predict');
+  // Future<void> sendFormDataWithImage(imageFile) async {
+  //   print("apiiiiiiii");
+  //   final url = Uri.parse('https://try-api.onrender.com/predict');
 
-    final request = http.MultipartRequest('POST', url);
-    request.files.add(http.MultipartFile.fromBytes(
-      'file',
-      await imageFile.readAsBytes(),
-      filename: 'image.jpg',
-    ));
+  //   final request = http.MultipartRequest('POST', url);
+  //   request.files.add(http.MultipartFile.fromBytes(
+  //     'file',
+  //     await imageFile.readAsBytes(),
+  //     filename: 'image.jpg',
+  //   ));
 
-    final response = await request.send();
+  //   final response = await request.send();
 
-    if (response.statusCode == 200) {
-      final responseBody = await response.stream.bytesToString();
-      final responseData = json.decode(responseBody);
-      setState(() {
-        myclass = responseData['class'];
-        confidence = responseData['confidence'];
-      });
+  //   if (response.statusCode == 200) {
+  //     final responseBody = await response.stream.bytesToString();
+  //     final responseData = json.decode(responseBody);
+  //     setState(() {
+  //       myclass = responseData['class'];
+  //       confidence = responseData['confidence'];
+  //     });
 
-      print(responseData);
-    } else {
-      print(response);
-      print("no goood");
-      const TopSnackBar(
-        message: 'Hello, world!',
-        icon: Icons.info,
-      );
-      // Handle the API error response
-    }
-  }
+  //   } else {
+  //     const TopSnackBar(
+  //       message: 'Hello, world!',
+  //       icon: Icons.info,
+  //     );
+  //     // Handle the API error response
+  //   }
+  // }
 
   Future getImagefromcamera() async {
     final pickedImage = await picker.getImage(
@@ -66,11 +66,10 @@ class ScanningPageState extends State<ScanningPage> {
       maxWidth: 256,
       maxHeight: 256,
     );
-
     setState(() {
       if (pickedImage != null) {
         _image = File(pickedImage.path);
-        sendFormDataWithImage(_image);
+        _predictData = _api.fetchPredictData(_image);
       } else {}
     });
   }
@@ -83,7 +82,7 @@ class ScanningPageState extends State<ScanningPage> {
     setState(() {
       if (pickedImage != null) {
         _image = File(pickedImage.path);
-        sendFormDataWithImage(_image);
+        _predictData = _api.fetchPredictData(_image);
       } else {}
     });
   }
@@ -197,67 +196,90 @@ class ScanningPageState extends State<ScanningPage> {
                     backgroundColor: Color.fromARGB(255, 62, 212, 0),
                     foregroundColor: Colors.white,
                     elevation: 0,
-                    child: Icon(
+                    child: const Icon(
                       Icons.camera_alt_outlined,
                       size: 30,
                     ),
                   ),
                 ],
               ),
-              if (confidence == null)
-                const Text('')
-              else
+              SizedBox(height: 15),
+              if (_image != null)
                 Container(
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     color: Color.fromARGB(100, 225, 225, 225),
                   ),
                   margin: EdgeInsets.only(left: 20, right: 20),
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              "Class:",
-                              style: TextStyle(
-                                  color: Colors.grey.shade900,
-                                  fontSize: 17.0,
-                                  fontWeight: FontWeight.w800),
+                  child: FutureBuilder(
+                      future: _predictData,
+                      builder: (BuildContext context,
+                          AsyncSnapshot<Predictmodel> snapshot) {
+                        if (snapshot.hasData) {
+                          final rec = snapshot.data;
+                          return Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Class: ",
+                                      style: TextStyle(
+                                          color: Colors.grey.shade900,
+                                          fontSize: 17.0,
+                                          fontWeight: FontWeight.w800),
+                                    ),
+                                    Text(
+                                      rec!.classs.toString(),
+                                      style: TextStyle(
+                                          color: Colors.grey.shade900,
+                                          fontSize: 17.0,
+                                          fontWeight: FontWeight.w800),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Confidence: ",
+                                      style: TextStyle(
+                                          color: Colors.grey.shade900,
+                                          fontSize: 17.0,
+                                          fontWeight: FontWeight.w800),
+                                    ),
+                                    SizedBox(width: 5),
+                                    Text(
+                                      rec.confidence!,
+                                      style: TextStyle(
+                                          color: Colors.grey.shade900,
+                                          fontSize: 17.0,
+                                          fontWeight: FontWeight.w800),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
-                            SizedBox(width: 15),
-                            Text(
-                              myclass!,
-                              style: TextStyle(
-                                  color: Colors.grey.shade900,
-                                  fontSize: 17.0,
-                                  fontWeight: FontWeight.w800),
+                          );
+                        } else if (snapshot.hasError) {
+                          WidgetsBinding.instance.addPostFrameCallback((_) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(snapshot.error.toString()),
+                                backgroundColor: Colors.red,
+                              ),
+                            );
+                          });
+                          return Text('Error');
+                        } else {
+                          return Padding(
+                            padding: const EdgeInsets.all(25.0),
+                            child: Center(
+                              child: CircularProgressIndicator(),
                             ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              "Confidence:",
-                              style: TextStyle(
-                                  color: Colors.grey.shade900,
-                                  fontSize: 17.0,
-                                  fontWeight: FontWeight.w800),
-                            ),
-                            SizedBox(width: 15),
-                            Text(
-                              confidence!,
-                              style: TextStyle(
-                                  color: Colors.grey.shade900,
-                                  fontSize: 17.0,
-                                  fontWeight: FontWeight.w800),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
+                          );
+                        }
+                      }),
                 ),
             ],
           ),
