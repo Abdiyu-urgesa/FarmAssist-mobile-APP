@@ -7,6 +7,7 @@ const String LAGUAGE_CODE = 'languageCode';
 //languages code
 const String ENGLISH = 'en';
 const String Amharic = 'am';
+const String OROMIC = 'or';
 
 Future<Locale> setLocale(String languageCode) async {
   SharedPreferences _prefs = await SharedPreferences.getInstance();
@@ -26,6 +27,8 @@ Locale _locale(String languageCode) {
       return const Locale(ENGLISH, '');
     case Amharic:
       return const Locale(Amharic, "");
+    case OROMIC:
+      return const Locale(OROMIC, "");
     default:
       return const Locale(ENGLISH, '');
   }

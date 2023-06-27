@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:farmassist_app/classes/language_constants.dart';
 import 'package:http/http.dart' as http;
 import 'package:farmassist_app/helpers/location.dart';
 import 'package:flutter/cupertino.dart';
@@ -75,11 +76,11 @@ class _WeatherPageState extends State<WeatherPage> {
     return Column(
       children: [
         Container(
-           margin:EdgeInsets.only(bottom: 15),
+          margin: EdgeInsets.only(bottom: 15),
           width: MediaQuery.of(context).size.width,
           height: 60,
           color: Color.fromARGB(100, 225, 225, 225),
-          padding: EdgeInsets.only(left:15,right:15,top:5,bottom:5),
+          padding: EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -99,7 +100,6 @@ class _WeatherPageState extends State<WeatherPage> {
                           fontSize: 15.0,
                           fontWeight: FontWeight.w600),
                     ),
-                   
                   ],
                 ),
               ),
@@ -107,7 +107,7 @@ class _WeatherPageState extends State<WeatherPage> {
                 children: [
                   Container(
                     width: 35,
-                    height:35,
+                    height: 35,
                     decoration: BoxDecoration(
                       color: Colors.blueAccent,
                       borderRadius: BorderRadius.circular(10.0),
@@ -132,8 +132,7 @@ class _WeatherPageState extends State<WeatherPage> {
           ),
         ),
         Container(
-          padding: EdgeInsets.only(left:15,right:15,top:5,bottom:5),
-          
+          padding: EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -155,11 +154,11 @@ class _WeatherPageState extends State<WeatherPage> {
                     ),
                     SizedBox(width: 5),
                     Column(
-                       mainAxisAlignment: MainAxisAlignment.center,
-                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                         Text(
-                          "Weather",
+                        Text(
+                          translation(context).weather,
                           style: TextStyle(
                               color: Colors.grey.shade600,
                               fontSize: 10.0,
@@ -198,10 +197,10 @@ class _WeatherPageState extends State<WeatherPage> {
                   SizedBox(width: 5),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                     crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "humdity",
+                        translation(context).humdity,
                         style: TextStyle(
                             color: Colors.grey.shade600,
                             fontSize: 10.0,
@@ -235,21 +234,19 @@ class _WeatherPageState extends State<WeatherPage> {
                   ),
                   SizedBox(width: 5),
                   Column(
-                     mainAxisAlignment: MainAxisAlignment.center,
-                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "wind speed",
+                        translation(context).windspeed,
                         style: TextStyle(
                             color: Colors.grey.shade600,
                             fontSize: 10.0,
                             fontWeight: FontWeight.w400),
                       ),
                       Text(
-                        windSpeed != null
-                            ? windSpeed.toString()
-                            : "loading",
-                        style:const TextStyle(
+                        windSpeed != null ? windSpeed.toString() : "loading",
+                        style: const TextStyle(
                             color: Colors.black54,
                             fontSize: 14.0,
                             fontWeight: FontWeight.w800),

@@ -47,6 +47,15 @@ class _LanguageDropdownState extends State<LanguageDropdown> {
                         fontWeight: FontWeight.bold,
                         fontSize: 13,
                         color: Color.fromARGB(205, 13, 25, 69)),
+                  )),
+              DropdownMenuItem(
+                  value: "or",
+                  child: Text(
+                    "oromifa",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 13,
+                        color: Color.fromARGB(205, 13, 25, 69)),
                   ))
             ]),
       ],

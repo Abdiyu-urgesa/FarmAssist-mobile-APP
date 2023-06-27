@@ -1,5 +1,13 @@
 {
-    "language": "እንግሊዝ",
-    "helloworld": "ሃሎ",
-    "abdiyu": "አብድዩ"
+    "language": "lang",
+    "helloworld": "Heelo",
+    "abdiyu": "abdiyu",
+    "humdity":"እርጥበት",
+    "windspeed":"ንፋስ",
+    "weather": "አየር ንብረት",
+    "upload": "ጫን",
+    "youdonthaveanyplantsphoto": "የእጽዋት ምስል የሎትም ",
+    "confidence": "እርግጠኝነት",
+    "classs": "የበሽታ አይነት",
+    "addyourplantnow": "አሁን ይጫኑ"
 }

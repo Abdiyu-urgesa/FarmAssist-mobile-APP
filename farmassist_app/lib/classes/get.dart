@@ -14,6 +14,8 @@ class servicesApi {
       final response = await _api.api.get('/posts');
       if (response.statusCode == 200) {
         final List<dynamic> jsonResponse = response.data;
+        print(jsonResponse);
+        jsonResponse.removeRange(jsonResponse.length - 3, jsonResponse.length);
         final posts =
             jsonResponse.map((json) => Postmodel.fromJson(json)).toList();
         return posts;

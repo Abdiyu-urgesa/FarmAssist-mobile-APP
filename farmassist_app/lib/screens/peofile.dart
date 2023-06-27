@@ -25,12 +25,12 @@ class _ProfilePageState extends State<ProfilePage> {
                 backgroundImage: AssetImage('assets/porfile.jpg'),
               ),
               const SizedBox(height: 20),
-              itemProfile('Name', 'Abdisa W ', CupertinoIcons.person),
+              itemProfile('Name', 'Abdisa Wake ', CupertinoIcons.person),
               const SizedBox(height: 10),
               itemProfile('Phone', '0961543704', CupertinoIcons.phone),
               const SizedBox(height: 10),
               itemProfile(
-                  'Address', 'abc address, xyz city', CupertinoIcons.location),
+                  'Adress ', 'o1 kofale,  shashamne', CupertinoIcons.location),
               const SizedBox(height: 10),
               itemProfile(
                   'Email', 'abdisawake5@gmail.com', CupertinoIcons.mail),

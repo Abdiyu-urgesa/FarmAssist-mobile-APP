@@ -12,5 +12,39 @@
     "abdiyu": "abdiyus name english",
     "@abdiyu": {
         "discription": "testing"
+    },
+     "humdity": "humdity",
+    "@humdity": {
+        "discription": "testing"
+    },
+     "windspeed": "wind sped",
+    "@windspeed": {
+        "discription": "testing"
+    },
+     "weather": "Weather",
+    "@weather": {
+        "discription": "testing"
+    },
+     "upload": "Upload",
+    "@upload": {
+        "discription": "testing"
+    },
+     "youdonthaveanyplantsphoto": "You don't have any plants photo",
+    "@youdonthaveanyplantsphoto": {
+        "discription": "testing"
+    },
+     "addyourplantnow": "Add your plant now",
+    "@addyourplantnow": {
+        "discription": "testing"
+    }
+    ,
+     "confidence": "confidence",
+    "@confidence": {
+        "discription": "testing"
+    },
+    
+     "classs": "class",
+    "@classs": {
+        "discription": "testing"
     }
 }

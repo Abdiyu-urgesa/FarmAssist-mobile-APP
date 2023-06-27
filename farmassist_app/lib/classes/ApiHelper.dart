@@ -13,7 +13,7 @@ class Api {
       }
       // if (accessToken.toString() != "") {
       //   options.headers['Authorization'] = 'Bearer $accessToken';
-      //   return handler.next(options);
+      return handler.next(options);
       // }
     }));
   }

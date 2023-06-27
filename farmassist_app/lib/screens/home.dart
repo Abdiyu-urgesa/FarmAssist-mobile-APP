@@ -124,8 +124,8 @@ class ScanningPageState extends State<ScanningPage> {
                             ),
                             TextButton(
                                 onPressed: getImagefromGallery,
-                                child: const Text(
-                                  "Upload",
+                                child: Text(
+                                  translation(context).upload,
                                   style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.bold,
@@ -145,7 +145,7 @@ class ScanningPageState extends State<ScanningPage> {
                               ? Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  children: const [
+                                  children: [
                                     Image(
                                       image: AssetImage("assets/Group 196.png"),
                                       height: 100,
@@ -153,7 +153,8 @@ class ScanningPageState extends State<ScanningPage> {
                                     ),
                                     SizedBox(height: 15),
                                     Text(
-                                      "You don't have any plants photo",
+                                      translation(context)
+                                          .youdonthaveanyplantsphoto,
                                       style: TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.bold,
@@ -161,7 +162,7 @@ class ScanningPageState extends State<ScanningPage> {
                                               Color.fromARGB(255, 69, 69, 69)),
                                     ),
                                     Text(
-                                      "Add your plant now",
+                                      translation(context).addyourplantnow,
                                       style: TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.bold,
@@ -224,7 +225,7 @@ class ScanningPageState extends State<ScanningPage> {
                                 Row(
                                   children: [
                                     Text(
-                                      "Class: ",
+                                      translation(context).classs,
                                       style: TextStyle(
                                           color: Colors.grey.shade900,
                                           fontSize: 17.0,
@@ -242,7 +243,7 @@ class ScanningPageState extends State<ScanningPage> {
                                 Row(
                                   children: [
                                     Text(
-                                      "Confidence: ",
+                                      translation(context).confidence,
                                       style: TextStyle(
                                           color: Colors.grey.shade900,
                                           fontSize: 17.0,
